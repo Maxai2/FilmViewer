@@ -6,14 +6,17 @@
       xmlns:local="clr-namespace:MaterialDesign"
 						xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="250"
-      Title="LogIn" Background="White">
+      d:DesignHeight="300" d:DesignWidth="200"
+      Title="LogIn" Background="White" ShowsNavigationUI="False">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition/>
 			<RowDefinition/>
 			<RowDefinition/>
 		</Grid.RowDefinitions>
+		
+		<Button Background="Transparent" BorderThickness="0" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top"
+													Margin="10" Content="X" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10" Click="close_program" Padding="1"/>
 
 		<DockPanel Grid.Row="0">
 			<Label DockPanel.Dock="Left" Background="#EDA639" Height="35" Width="3"/>
@@ -35,8 +38,8 @@
 				</Grid.RowDefinitions>
 				
 				<TextBox Grid.Row="0" materialDesign:HintAssist.Hint="Username"/>
-				<TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Password"/>
-				
+				<PasswordBox Grid.Row="1" materialDesign:HintAssist.Hint="Password"/>
+
 			</Grid>
 		</Grid>
 

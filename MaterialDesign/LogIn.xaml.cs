@@ -24,5 +24,10 @@ namespace MaterialDesign
         {
             InitializeComponent();
         }
+
+        private void close_program(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

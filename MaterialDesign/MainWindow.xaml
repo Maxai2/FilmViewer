@@ -11,63 +11,47 @@
 								TextElement.FontSize="13"
 								TextOptions.TextFormattingMode="Ideal" 
 								TextOptions.TextRenderingMode="Auto"
-								Title="MainWindow" Height="300" Width="250" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+								Title="MainWindow" Height="300" Width="250" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
 
-	<Border CornerRadius="40">
+	<Grid Name="Grd">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="0.1*"/>
+		</Grid.ColumnDefinitions>
 
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition Width="0.1*"/>
-			</Grid.ColumnDefinitions>
+		<Grid.Resources>
+			<Style TargetType="Frame">
+				<Setter Property="NavigationUIVisibility" Value="Hidden"/>
+				<Setter Property="Background" Value="White"/>
+			</Style>
+		</Grid.Resources>
 
-			<Frame Grid.Column="0" Background="White" Name="Main"/>
+		<Frame Grid.Column="0" Name="Main"/>
 
-			<StackPanel Grid.Column="1" Background="Transparent">
-				<Button Background="#EDA639" Margin="0 15 0 0" Height="20" Click="Button_Click">
-					<Image Source="add.png"/>
-				</Button>
+		<Frame Grid.Column="0" Name="AddReg" Margin="500 0 0 0"/>
 
-			</StackPanel>
+		<Grid Grid.Column="1" Background="Transparent">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="0.5*"/>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
+			<Button Grid.Row="0" Background="#EDA639" Margin="0,28,0,0" Height="20" Click="Button_Click" VerticalAlignment="Top" Padding="1">
+				<Button.Triggers>
+					<EventTrigger RoutedEvent="Button.Click">
+						<BeginStoryboard>
+							<Storyboard Storyboard.TargetName="AddReg" Storyboard.TargetProperty="Margin">
+								<ThicknessAnimation To="{Binding To}" From="{Binding From}" Duration="0:0:0.3"/>
+							</Storyboard>
+						</BeginStoryboard>
+					</EventTrigger>
+				</Button.Triggers>
+
+				<Image Source="add.png"/>
+			</Button>
 
 		</Grid>
-	</Border>
-			
-			<!--<Label Grid.Row="0" Content="Film View" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="{StaticResource Roboto-ThinItalic}" FontSize="48" Foreground="Yellow"/>
-			<Grid Grid.Row="1">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition Width="6*"/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<TabControl Grid.Column="1" Background="Transparent">
-					<TabItem Header="Sign In">
-						<TextBox />
-					</TabItem>
-					<TabItem Header="Sign Out">
-					</TabItem>
-				</TabControl>
-			</Grid>
-			<Grid Grid.Row="2">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Button Grid.Column="0" Width="80"  Click="close_program" Content="Ok" Foreground="Black"/>
-				<Button Grid.Column="1" Width="80"  Click="close_program" Content="Cancel" Foreground="Black"/>
-			</Grid>-->
-
-			<!--<dragablz:TabablzControl>
-					<dragablz:TabablzControl.InterTabController>
-						<dragablz:InterTabController />
-					</dragablz:TabablzControl.InterTabController>
-					<TabItem Header="Login">
-						<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Hello World</TextBlock>
-					</TabItem>
-					<TabItem Header="Register">
-						<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
-					</TabItem>
-				</dragablz:TabablzControl>-->
-
+	</Grid>
 	
 </Window>
