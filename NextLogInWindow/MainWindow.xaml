@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:NextLogInWindow"
 								xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="0.3*"/>
-			<RowDefinition/>
+			<RowDefinition MinHeight="100"/>
 			<RowDefinition Height="0.1*"/>
-			<RowDefinition/>
+			<RowDefinition MinHeight="100"/>
 		</Grid.RowDefinitions>
 
 		<Grid Grid.Row="0">
@@ -22,9 +22,9 @@
 				<ColumnDefinition Width="0.1*"/>
 			</Grid.ColumnDefinitions>
 
-			<TextBox Grid.Column="0" Margin="10"/>
+			<TextBox Grid.Column="0" Margin="10" FocusableChanged="TextBox_FocusableChanged"/>
 
-			<material:PopupBox Grid.Column="2" PlacementMode="BottomAndAlignCentres" StaysOpen="False">
+			<material:PopupBox Grid.Column="2" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
 				<StackPanel>
 					<Label Content="Name Surname"/>
 					<Separator/>
@@ -50,18 +50,38 @@
 					<RowDefinition/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				
-				
-				
+
+				<Grid Grid.Row="0">
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<material:PackIcon Name="piList" Grid.Row="0" Kind="ViewList" Width="Auto" Height="Auto" HorizontalAlignment="Center" Cursor="Hand" MouseDown="PackIcon_MouseDown" Background="Gray"/>
+
+					<material:PackIcon Name="piGrid" Grid.Row="1" Kind="ViewModule" Width="Auto" Height="Auto" HorizontalAlignment="Center" Cursor="Hand" MouseDown="PackIcon_MouseDown"/>
+
+				</Grid>
+
+				<TextBlock Name="tbMoreWatched" Grid.Row="2" Margin="0 0 0 5" VerticalAlignment="Bottom" Text="more..."  Foreground="Blue" Cursor="Hand" HorizontalAlignment="Center" MouseEnter="tbMoreWatched_MouseEnter" MouseDown="tbMoreWatched_MouseDown" MouseLeave="tbMoreWatched_MouseLeave"/>
+
 			</Grid>
-			
+
 		</Grid>
 
-		<GridSplitter Grid.Row="2" BorderThickness="3" />
-		
+		<GridSplitter Grid.Row="2" BorderThickness="0"  HorizontalAlignment="Stretch" Height="8"/>
+
 		<Grid Grid.Row="3">
-			
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="0.1*"/>
+			</Grid.ColumnDefinitions>
+
+			<ListBox Grid.ColumnSpan="2"/>
+
+			<TextBlock Name="tbMoreLook" Grid.Column="1" Margin="0 0 0 5" VerticalAlignment="Bottom" Text="more..."  Foreground="Blue" Cursor="Hand" HorizontalAlignment="Center" MouseEnter="tbMoreLook_MouseEnter"  MouseLeave="tbMoreLook_MouseLeave" MouseDown="tbMoreLook_MouseDown"/>
+
 		</Grid>
-		
+
 	</Grid>
 </Window>
