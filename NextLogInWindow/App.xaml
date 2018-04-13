@@ -13,57 +13,34 @@
 			</ResourceDictionary.MergedDictionaries>
 
 
+			<ItemsPanelTemplate x:Key="lbItemsPanelWrap">
+				<WrapPanel/>
+			</ItemsPanelTemplate>
 
-			<Style x:Key="lbItemsPanelWrap" TargetType="ListView">
-				<Setter Property="ItemsPanel">
-					<Setter.Value>
-						<ItemsPanelTemplate >
-							<WrapPanel/>
-						</ItemsPanelTemplate>
-					</Setter.Value>
-				</Setter>
-			</Style>
+			<ItemsPanelTemplate x:Key="lbItemsPanelStack">
+				<StackPanel/>
+			</ItemsPanelTemplate>
 
+			<DataTemplate x:Key="lbItemTemplateList">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
 
+					<Image Grid.Column="0" Source="{Binding ImagePath}" Width="30" Height="50"/>
 
-			<Style x:Key="lbItemsPanelStack" TargetType="ListView">
-				<Setter Property="ItemsPanel">
-					<Setter.Value>
-						<ItemsPanelTemplate >
-							<StackPanel/>
-						</ItemsPanelTemplate>
-					</Setter.Value>
-				</Setter>
-			</Style>
+					<StackPanel Grid.Column="1">
+						<TextBlock Text="{Binding Title, StringFormat=Title}"/>
+						<TextBlock  Text="{Binding Runtime, StringFormat=Runtime}"/>
+					</StackPanel>
 
+				</Grid>
+			</DataTemplate>
 
-			<Style x:Key="lbItemTemplateList" TargetType="ListView">
-				<Setter Property="ItemTemplate">
-					<Setter.Value>
-						<DataTemplate>
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition/>
-									<ColumnDefinition/>
-								</Grid.ColumnDefinitions>
-
-								<Image Source="{Binding ImagePath}"/>
-
-							</Grid>
-						</DataTemplate>
-					</Setter.Value>
-				</Setter>
-			</Style>
-
-			<Style x:Key="lbItemTemplateGrid" TargetType="ListView">
-				<Setter Property="ItemTemplate">
-					<Setter.Value>
-						<DataTemplate>
-							<TextBox Text="{Binding Path=Title}"/>
-						</DataTemplate>
-					</Setter.Value>
-				</Setter>
-			</Style>
+			<DataTemplate x:Key="lbItemTemplateGrid">
+				<Image Grid.Column="0" Source="{Binding ImagePath}" Width="160" Height="150"/>
+			</DataTemplate>
 
 		</ResourceDictionary>
 

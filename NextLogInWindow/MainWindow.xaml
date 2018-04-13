@@ -42,7 +42,7 @@
 				<ColumnDefinition Width="0.1*"/>
 			</Grid.ColumnDefinitions>
 
-			<ListBox Name="lbWatchedFilms" Grid.ColumnSpan="2" ItemsSource="{Binding WatchedFilm}">
+			<ListBox Name="lbWatchedFilms" Grid.ColumnSpan="2" ItemsSource="{Binding WatchedFilm}" ItemsPanel="{StaticResource lbItemsPanelWrap}" ItemTemplate="{StaticResource lbItemTemplateGrid}">
 
 				<ListBox.ItemContainerStyle>
 					<Style TargetType="ListBoxItem">
@@ -72,17 +72,7 @@
 					<RowDefinition/>
 				</Grid.RowDefinitions>
 
-				<Grid Grid.Row="0">
-					<Grid.RowDefinitions>
-						<RowDefinition/>
-						<RowDefinition/>
-					</Grid.RowDefinitions>
-
-					<material:PackIcon Name="piList" Grid.Row="0" Kind="ViewList" Width="Auto" Height="Auto" HorizontalAlignment="Center" Cursor="Hand" MouseDown="PackIcon_MouseDown" Background="Gray"/>
-
-					<material:PackIcon Name="piGrid" Grid.Row="1" Kind="ViewModule" Width="Auto" Height="Auto" HorizontalAlignment="Center" Cursor="Hand" MouseDown="PackIcon_MouseDown"/>
-
-				</Grid>
+				<material:PackIcon Grid.Row="0" Name="piIcon" Kind="ViewGrid" Width="Auto" Height="Auto" HorizontalAlignment="Center" Cursor="Hand" MouseDown="PackIcon_MouseDown"/>
 
 				<TextBlock Name="tbMoreWatched" Grid.Row="2" Margin="0 0 0 5" VerticalAlignment="Bottom" Text="more..."  Foreground="Blue" Cursor="Hand" HorizontalAlignment="Center" MouseEnter="tbMoreWatched_MouseEnter" MouseDown="tbMoreWatched_MouseDown" MouseLeave="tbMoreWatched_MouseLeave"/>
 

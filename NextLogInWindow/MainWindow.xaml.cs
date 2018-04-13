@@ -27,8 +27,10 @@ namespace NextLogInWindow
         {
             InitializeComponent();
 
-            lbWatchedFilms.ItemTemplate = this.Resources["lbItemsPanelWrap"] as DataTemplate;
-            lbWatchedFilms.ItemsPanel = this.Resources["lbItemTemplateGrid"] as ItemsPanelTemplate;
+            DataContext = this;
+
+            //lbWatchedFilms.ItemTemplate = this.Resources["lbItemsPanelWrap"] as DataTemplate;
+            //lbWatchedFilms.ItemsPanel = this.Resources["lbItemTemplateGrid"] as ItemsPanelTemplate;
 
             WatchedFilm = new ObservableCollection<Film>();
 
@@ -52,22 +54,40 @@ namespace NextLogInWindow
 
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (changeCol)
+            if (!changeCol)
             {
-                piGrid.Background = Brushes.Transparent;
-                piList.Background = Brushes.Gray;
+                piIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.ViewList;
 
-                lbWatchedFilms.ItemTemplate = this.Resources["lbItemsPanelStack"] as DataTemplate;
-                lbWatchedFilms.ItemsPanel = this.Resources["lbItemTemplateList"] as ItemsPanelTemplate;
+
+
+                DataTemplate template = this.FindResource("lbItemTemplateList") as DataTemplate;
+
+                lbWatchedFilms.ItemTemplate = template;
+
+
+
+                ItemsPanelTemplate itemsPanel = this.FindResource("lbItemsPanelStack") as ItemsPanelTemplate;
+
+                lbWatchedFilms.ItemsPanel = itemsPanel;
             }
             else
             {
-                piGrid.Background = Brushes.Gray;
-                piList.Background = Brushes.Transparent;
+                piIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.ViewGrid;
 
-                lbWatchedFilms.ItemTemplate = this.Resources["lbItemsPanelWrap"] as DataTemplate;
-                lbWatchedFilms.ItemsPanel = this.Resources["lbItemTemplateGrid"] as ItemsPanelTemplate;
+
+
+                DataTemplate template = this.FindResource("lbItemTemplateGrid") as DataTemplate;
+
+                lbWatchedFilms.ItemTemplate = template;
+
+
+
+                ItemsPanelTemplate itemsPanel = this.FindResource("lbItemsPanelWrap") as ItemsPanelTemplate;
+                
+                lbWatchedFilms.ItemsPanel = itemsPanel;
             }
+
+            lbWatchedFilms.Items.Refresh();
 
             changeCol = !changeCol;
         }
@@ -89,12 +109,89 @@ namespace NextLogInWindow
         {
 
         }
-
+        //-------------------------------------------------------------------
         private void TextBox_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
         }
-        //-------------------------------------------------------------------
+        ////-------------------------------------------------------------------
+        //private void CreateTempGridList()
+        //{
+        //    if (changeCol)
+        //    {
+        //        FrameworkElementFactory factory = new FrameworkElementFactory(typeof(Image));
+
+        //        factory.SetBinding(Image.SourceProperty, new Binding("ImagePath"));
+
+        //        factory.SetValue(Image.WidthProperty, 150);
+        //        factory.SetValue(Image.HeightProperty, 160);
+
+        //        var dataTemplate = new DataTemplate();
+
+        //        dataTemplate.VisualTree = factory;
+
+        //        lbWatchedFilms.ItemTemplate = dataTemplate;
+        //    }
+        //    else
+        //    {
+        //        FrameworkElementFactory column1 = new FrameworkElementFactory(typeof(ColumnDefinition));
+
+        //        FrameworkElementFactory image = new FrameworkElementFactory(typeof(Image));
+
+        //        image.SetBinding(Image.SourceProperty, new Binding("ImagePath"));
+
+        //        image.SetValue(Image.WidthProperty, 50);
+        //        image.SetValue(Image.HeightProperty, 30);
+
+        //        column1.AppendChild(image);
+
+        //        FrameworkElementFactory column2 = new FrameworkElementFactory(typeof(ColumnDefinition));
+
+                
+
+        //        FrameworkElementFactory textBlockTitle = new FrameworkElementFactory(typeof(TextBlock));
+
+        //        textBlockTitle.SetBinding(TextBlock.TextProperty, new Binding("Title"));
+
+        //        FrameworkElementFactory textBlockRunTime = new FrameworkElementFactory(typeof(TextBlock));
+
+        //        textBlockTitle.SetBinding(TextBlock.TextProperty, new Binding("Runtime"));
+
+
+
+        //        FrameworkElementFactory collection = new FrameworkElementFactory(typeof(ColumnDefinitionCollection));
+
+        //        collection.AppendChild(column1);
+        //        collection.AppendChild(column2);
+
+        //        FrameworkElementFactory grid = new FrameworkElementFactory(typeof(Grid));
+
+        //        grid.AppendChild(collection);
+
+        //        //grid.SetValue(Grid.
+
+        //        //ItemsPanelTemplate items = new ItemsPanelTemplate();
+        //    }
+
+
+        //}
+        ////-------------------------------------------------------------------
+        //private void CreateItem()
+        //{
+        //    FrameworkElementFactory factory = new FrameworkElementFactory(typeof(Image));
+
+        //    factory.SetBinding(Image.SourceProperty, new Binding("ImagePath"));
+
+        //    //factory.SetValue(Image.WidthProperty, width);
+        //    //factory.SetValue(Image.HeightProperty, height);
+
+        //    var dataTemplate = new DataTemplate();
+
+        //    dataTemplate.VisualTree = factory;
+
+        //    lbWatchedFilms.ItemTemplate = dataTemplate;
+        //}
+        ////-------------------------------------------------------------------
     }
 }
 //-------------------------------------------------------------------
