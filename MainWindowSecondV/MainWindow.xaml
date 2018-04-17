@@ -83,6 +83,13 @@
 					
 					<ListBoxItem Height="60">
 						<StackPanel Orientation="Horizontal">
+							<material:PackIcon Kind="SearchWeb" Width="25" Height="25" Foreground="#FF1859C9" VerticalAlignment="Center"/>
+							<TextBlock Text="Search" Background="Transparent" VerticalAlignment="Center" Margin="20 10" HorizontalAlignment="Center" Foreground="#FF1859C9"/>
+						</StackPanel>
+					</ListBoxItem>
+					
+					<ListBoxItem Height="60">
+						<StackPanel Orientation="Horizontal">
 							<material:PackIcon Kind="Settings" Width="25" Height="25" Foreground="#FF1859C9" VerticalAlignment="Center"/>
 							<TextBlock Text="Settings/Profile" Background="Transparent" VerticalAlignment="Center" Margin="20 10" HorizontalAlignment="Center" Foreground="#FF1859C9"/>
 						</StackPanel>
