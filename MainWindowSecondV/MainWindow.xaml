@@ -6,19 +6,20 @@
         xmlns:local="clr-namespace:MainWindowSecondV"
 								xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Height="600" Width="1080" WindowStyle="None" ResizeMode="NoResize">
+        Height="600" Width="1080" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
 
 	<Window.Resources>
+
 		<Storyboard x:Key="MenuOpen">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0" Value="50"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Key="MenuClose">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
 				<EasingDoubleKeyFrame KeyTime="0" Value="200"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</Window.Resources>
@@ -35,16 +36,29 @@
 	<DockPanel Background="LightGray">
 
 		<Grid Height="70" VerticalAlignment="Top" DockPanel.Dock="Top" Background="#FF1859C9">
+
+			<StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+				<Label Content="Date" VerticalContentAlignment="Center" FontSize="20"/>
+				<Label Content="Time" VerticalContentAlignment="Center" FontSize="20"/>
+				<Label Content="Weather" VerticalContentAlignment="Center" FontSize="20"/>
+			</StackPanel>
+			
 			<Label Content="Film Viewer" VerticalAlignment="Center" Background="Transparent" Foreground="White" FontSize="40" HorizontalAlignment="Center"/>
-			<material:PopupBox HorizontalAlignment="Right" Foreground="White" Margin="10" PlacementMode="BottomAndAlignLeftEdges" StaysOpen="False">
-				<StackPanel Width="150">
-					<Button Content="Log Out"/>
-					<Button Name="bCloseApp" Content="Exit" Click="bCloseApp_Click"/>
-				</StackPanel>
-			</material:PopupBox>
+
+			<StackPanel HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
+				<Label Content="Surname" VerticalContentAlignment="Center" FontSize="20"/>
+				<Label Content="Name" VerticalContentAlignment="Center" FontSize="20"/>
+				<material:PopupBox Foreground="White" PlacementMode="BottomAndAlignLeftEdges" StaysOpen="False">
+					<StackPanel Width="150">
+						<Button Content="Log Out"/>
+						<Button Name="bCloseApp" Content="Exit" Click="bCloseApp_Click"/>
+					</StackPanel>
+				</material:PopupBox>
+			</StackPanel>
+
 		</Grid>
 
-		<Grid x:Name="GridMenu" Width="60" DockPanel.Dock="Left" HorizontalAlignment="Left" Background="#FF1B3861">
+		<Grid x:Name="GridMenu" Width="50" DockPanel.Dock="Left" HorizontalAlignment="Left" Background="#FF1B3861">
 			<StackPanel>
 				<Grid Background="White" Height="60">
 
@@ -60,45 +74,45 @@
 
 				<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-					<ListBoxItem Height="60">
+					<ListViewItem Height="60">
 						<StackPanel Orientation="Horizontal">
 							<material:PackIcon Kind="ViewDashboard" Width="25" Height="25" Foreground="#FF1859C9" VerticalAlignment="Center"/>
 							<TextBlock Text="Home" Background="Transparent" VerticalAlignment="Center" Margin="20 10" HorizontalAlignment="Center" Foreground="#FF1859C9"/>
 						</StackPanel>
-					</ListBoxItem>
+					</ListViewItem>
 
-					<ListBoxItem Height="60">
+					<ListViewItem Height="60">
 						<StackPanel Orientation="Horizontal">
 							<material:PackIcon Kind="Timelapse" Width="25" Height="25" Foreground="#FF1859C9" VerticalAlignment="Center"/>
 							<TextBlock Text="Whatch Later" Background="Transparent" VerticalAlignment="Center" Margin="20 10" HorizontalAlignment="Center" Foreground="#FF1859C9"/>
 						</StackPanel>
-					</ListBoxItem>
+					</ListViewItem>
 
-					<ListBoxItem Height="60">
+					<ListViewItem Height="60">
 						<StackPanel Orientation="Horizontal">
 							<material:PackIcon Kind="Eye" Width="25" Height="25" Foreground="#FF1859C9" VerticalAlignment="Center"/>
 							<TextBlock Text="Whatched Film" Background="Transparent"  VerticalAlignment="Center" Margin="20 10" HorizontalAlignment="Center" Foreground="#FF1859C9"/>
 						</StackPanel>
-					</ListBoxItem>
+					</ListViewItem>
 
-					<ListBoxItem Height="60">
+					<ListViewItem Height="60">
 						<StackPanel Orientation="Horizontal">
 							<material:PackIcon Kind="SearchWeb" Width="25" Height="25" Foreground="#FF1859C9" VerticalAlignment="Center"/>
 							<TextBlock Text="Search" Background="Transparent" VerticalAlignment="Center" Margin="20 10" HorizontalAlignment="Center" Foreground="#FF1859C9"/>
 						</StackPanel>
-					</ListBoxItem>
+					</ListViewItem>
 
-					<ListBoxItem Height="60">
+					<ListViewItem Height="60">
 						<StackPanel Orientation="Horizontal">
 							<material:PackIcon Kind="Settings" Width="25" Height="25" Foreground="#FF1859C9" VerticalAlignment="Center"/>
 							<TextBlock Text="Settings/Profile" Background="Transparent" VerticalAlignment="Center" Margin="20 10" HorizontalAlignment="Center" Foreground="#FF1859C9"/>
 						</StackPanel>
-					</ListBoxItem>
+					</ListViewItem>
 
 				</ListView>
 
 			</StackPanel>
-		</Grid>
+		</Grid> 
 
 		<Frame/>
 
