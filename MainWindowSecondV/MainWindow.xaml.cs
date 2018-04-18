@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +35,19 @@ namespace MainWindowSecondV
         {
             bOpen.Visibility = Visibility.Collapsed;
             bClose.Visibility = Visibility.Visible;
+        }
+
+        private void bCloseApp_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+                return;
+
+            this.DragMove();
         }
     }
 }
